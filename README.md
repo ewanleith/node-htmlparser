@@ -14,13 +14,16 @@ A forgiving HTML/XML/RSS parser written in JS for both the browser and NodeJS (y
 View runtests.html in any browser
 
 ##Usage In Node
+	var sys = require("sys");
 	var htmlparser = require("htmlparser");
 	var rawHtml = "Xyz <script language= javascript>var foo = '<<bar>>';< /  script><!--<!-- Waah! -- -->";
 	var handler = new htmlparser.DefaultHandler(function (error, dom) {
 		if (error)
-			[...do something for errors...]
+			//[...do something for errors...]
+			sys.puts('Sorry there was a problem');
 		else
-			[...parsing done, do something...]
+			//[...parsing done, do something...]
+			sys.puts('It worked, check your output below');
 	});
 	var parser = new htmlparser.Parser(handler);
 	parser.parseComplete(rawHtml);
